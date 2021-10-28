@@ -92,3 +92,15 @@ class Controller(object):
                     print(results[x])
                 except IndexError:  # Out of results
                     return
+
+    def combined_search(self, date_string: str, search_string: str, result_count: int = 10):
+        ix = self.ix
+        with ix.searcher() as searcher:
+            parser = MultifieldParser(["dt"], ix.schema)  # Marking 'default' search field
+            myquery = parser.parse(date_string)
+            results = searcher.search(myquery)
+            for x in range(result_count):
+                try:
+                    print(results[x])
+                except IndexError:  # Out of results
+                    return

@@ -80,7 +80,9 @@ from DBInterface import DBInterface
 
 
 cnt = Controller('./datastore.db')
-cnt.dt_search('2020')
+cnt.search('title:bezos AND dt:[20200122 to 20200123]')
+# cnt.dt_search('20200112')  # year month day
+
 
 # for result in results:
 #
