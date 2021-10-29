@@ -18,11 +18,9 @@
 """
 
 from UserParser import UserParser
-from IndexInterface import IndexInterface
 
 
 if __name__ == "__main__":
-    ...
     userparser = UserParser()
     userparser.print_commands()
 
@@ -31,10 +29,6 @@ if __name__ == "__main__":
         if user_string[:2] == '!#':  # Special command
             userparser.parse_command(user_string)
         else:
-            # print(f"Date begin is {userparser.date_begin}")
-            # print(f"Date end is {userparser.date_end}")
-            # print(f"mode is {userparser.mode}")
-
             userparser.search(user_string)
 
 

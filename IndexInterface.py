@@ -74,7 +74,9 @@ class IndexInterface(object):
                mode: str,
                begin_date: str,
                end_date: str):
-        """ searches the content, title, and author fields"""
+        """ searches the content, title, and author fields using the given search_string
+            These results are ANDed with the date range to allow temporal filtering.
+        """
         ix = self.ix
         with ix.searcher() as searcher:
             if mode == 'AND':
@@ -91,8 +93,7 @@ class IndexInterface(object):
             datequery = parser.parse(f'dt:[{begin_date} to {end_date}]')
 
             joined_query = And([myquery, datequery])
-            results = searcher.search(joined_query)
-            # results = searcher.search(myquery)
+            results = searcher.search(joined_query, limit=result_count)
             for x in range(result_count):
                 try:
                     print(results[x])

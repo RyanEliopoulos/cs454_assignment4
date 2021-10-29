@@ -82,8 +82,7 @@ class UserParser(object):
 
     def update_result_count(self, parameter):
         try:
-            int(parameter)
-            self.result_count = parameter
+            self.result_count = int(parameter)
             print(f'Result count is now {parameter}')
         except ValueError:
             print(f'{parameter} is not a valid value')
