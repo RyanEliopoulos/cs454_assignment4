@@ -53,4 +53,4 @@ by the two-character escape sequence "!#".
 - !#quit
 
 The default mode is "and". The default date ranges go from 2005 to 2030 just so the encompass all possible values.
-
+User input is taken to be a standard query in the absence of the escape sequence. The results will be printed to screen.
