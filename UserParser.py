@@ -41,10 +41,9 @@ class UserParser(object):
             if user_string[x] in whitespace_list:
                 command = user_string[2:x]
                 parameter = user_string[x:].strip()
-            # But the command may be a single word
-            if user_string[x] is user_string[-1]:
-                command = user_string[2:]
-
+        # Checking if the command is a single word with no parameter
+        if command == '':
+            command = user_string[2:]
         self.execute_command(command, parameter)
 
     def execute_command(self, command: str, parameter: str):
