@@ -6,7 +6,7 @@ The historical data was omitted since that information is independent of the use
 be used to pre render images. Stock symbols were also omitted since those will likely be parsed
 before submitting the query string to whoosh anyway in order to prepare the respective prerendered assets. <br><br>
 
-For simplicity the data only includes posts made in the month of January 2020
+For simplicity the data only includes posts made in the month of January 2020. This amounts to just over 6000 tuples.
 <br><br>
 
 

@@ -104,6 +104,10 @@ class UserParser(object):
         print(f'Document total: {counter}')
 
     def search(self, search_string):
-        self.qiface.search(search_string, self.result_count, self.mode, self.date_begin, self.date_end)
+        self.qiface.search(search_string,
+                           self.result_count,
+                           self.mode,
+                           self.date_begin,
+                           self.date_end)
 
 
