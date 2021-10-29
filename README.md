@@ -19,7 +19,8 @@ author=TEXT(stored=True), <br>
 permalink=STORED, <br>
 dt=NUMERIC(stored=True)) <br>
 
-The first three fields represent the data of primary interest. A preview of the posts will be used on the results page. <br>
+The first three fields represent the data of primary interest. A preview of the posts will be used on the results page. 
+Author may be removed in the future pending determined value. <br>
 The permalink will be used to reconstruct the URL linking to the OP. The preview will be hyperlinked<br>
 The dt (datetime) field facilitates date range filtering.  Storing it might not be necessary but better safe than sorry.
 
@@ -49,6 +50,7 @@ by the two-character escape sequence "!#".
 - !#date_end \<yyyymmdd\>
 - !#results \<integer\>  (updates the number of results displayed per query)
 - !#all   (This prints all documents in the database and the count)
+- !#quit
 
 The default mode is "and". The default date ranges go from 2005 to 2030 just so the encompass all possible values.
 

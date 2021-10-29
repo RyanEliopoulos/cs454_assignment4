@@ -27,6 +27,7 @@ class UserParser(object):
         print('!#date_end <YYYYMMDD> - End of the desired date range')
         print('!#results <number> - number of query results to display')
         print('!#all - prints all documents from the database. Lists the total number.')
+        print('!#quit')
 
     def parse_command(self, user_string: str):
         """ Raw string from the user input. Still includes the escape sequence """
@@ -36,9 +37,13 @@ class UserParser(object):
         command: str = ''
         parameter: str = ''
         for x in range(strlen):
+            # Breaking at first sign of whitespace
             if user_string[x] in whitespace_list:
                 command = user_string[2:x]
                 parameter = user_string[x:].strip()
+            # But the command may be a single word
+            if user_string[x] is user_string[-1]:
+                command = user_string[2:]
 
         self.execute_command(command, parameter)
 
@@ -53,6 +58,7 @@ class UserParser(object):
             'date_end': self.update_date_end,
             'results': self.update_result_count,
             'all': self.print_all,
+            'quit': self.quit
         }
 
         if command not in valid_commands:
@@ -87,7 +93,10 @@ class UserParser(object):
         except ValueError:
             print(f'{parameter} is not a valid value')
 
-    def print_all(self):
+    def quit(self, parameter):
+        exit(0)
+
+    def print_all(self, parameter):
         all_docs = self.qiface.ix.searcher().documents()
         counter = 0
         for doc in all_docs:
