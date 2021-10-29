@@ -6,7 +6,7 @@ The historical data was omitted since that information is independent of the use
 be used to pre render images. Stock symbols were also omitted since those will likely be parsed
 before submitting the query string to whoosh anyway in order to prepare the respective prerendered assets. <br><br>
 
-For simplicity the data only includes posts made in the month of January 2020. This amounts to just over 6000 tuples.
+For simplicity the data only includes posts made in the month of January 2020. This amounts to 6907 tuples.
 <br><br>
 
 
@@ -17,7 +17,7 @@ title=TEXT(stored=True), <br>
 content=TEXT(stored=True),<br>
 author=TEXT(stored=True), <br>
 permalink=STORED, <br>
-dt=NUMERIC(stored=True)) <br>
+dt=DATETIME(stored=True)) <br>
 
 The first three fields represent the data of primary interest. A preview of the posts will be used on the results page. 
 Author may be removed in the future pending determined value. <br>

@@ -11,10 +11,7 @@
 
 
 
-    I don't need a junction table since with whoosh I can just use the search to find the appropriate posts.
 
-
-    Posts span January 2020
 """
 
 from UserParser import UserParser
@@ -26,23 +23,11 @@ if __name__ == "__main__":
 
     while True:
         user_string = input()
-        if user_string[:2] == '!#':  # Special command
+        if user_string[:2] == '!#':  # Escape sequence
             userparser.parse_command(user_string)
         else:
             userparser.search(user_string)
 
-
-
-
-
-    # cnt = IndexInterface('./datastore.db')
-    # cnt.testing_search('title:bezos OR dt:[20200122 to 20200123]')
-
-
-# cnt.dt_search('20200112')  # year month day
-# cnt.search('msft amzn', mode='AND')
-# all_docs = cnt.ix.searcher().documents()
-# cnt.testing_search('hello bezos')
 
 
 
