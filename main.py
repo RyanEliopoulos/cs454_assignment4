@@ -17,75 +17,39 @@
     Posts span January 2020
 """
 
-from Controller import Controller
-from whoosh.index import create_in
-from whoosh.index import open_dir
-from whoosh.query import *
-from whoosh.qparser import QueryParser
-from whoosh.fields import *
-from whoosh import index
-import os
-from DBInterface import DBInterface
+from UserParser import UserParser
+from IndexInterface import IndexInterface
 
 
-# This stuff is for creating the index
+if __name__ == "__main__":
+    ...
+    userparser = UserParser()
+    userparser.print_commands()
 
-# schema = Schema(title=TEXT(stored=True),
-#                 content=TEXT(stored=True),
-#                 author=TEXT(stored=True),
-#                 permalink=STORED,
-#                 timestamp=NUMERIC(stored=True))
-#
-# if not os.path.exists('indexdir'):
-#     os.mkdir('indexdir')
-#
-#
-# ix = index.create_in('indexdir', schema)
-# writer = ix.writer()
-#
-# db = DBInterface('./datastore.db')
-# ret = db.manual()
-# if ret[0] != 0:
-#     print(ret)
-#     exit()
-#
-# rows = ret[1]['content']
-#
-# for row in rows:
-#
-#     writer.add_document(
-#         title=row['post_title'],
-#         content=row['post_content'],
-#         author=row['author'],
-#         permalink=row['permalink'],
-#         timestamp=row['timestamp'],
-#
-#     )
-#
-# ret = writer.commit()
-# print(ret)
-#
-#
-# # Now for querying the index
-# ix = open_dir('indexdir')
-#
-# with ix.searcher() as searcher:
-#     parser = QueryParser("content", ix.schema)
-#     myquery = parser.parse("microsoft")
-#     results = searcher.search(myquery)
-#
-#     for value in results:
-#         print(value)
+    while True:
+        user_string = input()
+        if user_string[:2] == '!#':  # Special command
+            userparser.parse_command(user_string)
+        else:
+            # print(f"Date begin is {userparser.date_begin}")
+            # print(f"Date end is {userparser.date_end}")
+            # print(f"mode is {userparser.mode}")
+
+            userparser.search(user_string)
 
 
 
-cnt = Controller('./datastore.db')
-cnt.search('title:bezos AND dt:[20200122 to 20200123]')
+
+
+    # cnt = IndexInterface('./datastore.db')
+    # cnt.testing_search('title:bezos OR dt:[20200122 to 20200123]')
+
+
 # cnt.dt_search('20200112')  # year month day
+# cnt.search('msft amzn', mode='AND')
+# all_docs = cnt.ix.searcher().documents()
+# cnt.testing_search('hello bezos')
 
-
-# for result in results:
-#
 
 
 

@@ -1,0 +1,14 @@
+Interactive session: User can use escape sequence to modify some settings
+
+Date_begin    datetime for beginning. No end defaults to year9999
+Date_end      datetime for end. No beginning defaults to year 0000 (or equivalent)
+        AND the date query to the rest.
+
+mode          OR or AND the terms.
+
+result size   How many results should be printed for a given query.
+
+
+AND and OR are parsed by the query parser as well. So really this isn't bad at all.
+
+Just need to figure out what the interface will be and how to integrate the historical data.
